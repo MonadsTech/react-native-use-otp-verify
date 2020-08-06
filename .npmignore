@@ -1,12 +1,13 @@
-
-
 # node.js
 #
 node_modules/
 npm-debug.log
 yarn-error.log
 
-
 # Bundle artifact
 *.jsbundle
 
+
+.eslintrc.js
+.flowconfig
+yarn.lock

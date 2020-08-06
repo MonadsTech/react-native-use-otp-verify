@@ -1,5 +1,5 @@
 {
-  "name": "rn-use-otp-verify",
+  "name": "react-native-use-otp-verify",
   "version": "1.0.0",
   "description": "react native hook wrapper for use-otp-verify",
   "main": "src/useOtpVerify.js",
@@ -8,13 +8,28 @@
     "name": "Pankaj Vaghela",
     "email": "vpankaj1998official@gmail.com"
   },
+  "homepage": "https://github.com/MonadsTech/react-native-use-otp-verify",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MonadsTech/react-native-use-otp-verify"
+  },
+  "keywords": [
+    "react",
+    "native",
+    "otp",
+    "verify",
+    "android",
+    "hook",
+    "retrieve",
+    "otp read"
+  ],
   "module": "src/useOtpVerify.js",
   "dependencies": {
     "react-native-otp-verify": "^1.0.3"
-  },
+  },  
   "peerDependencies": {
-    "react": "^16.11.0",
-    "react-native": "^0.62.2",
+    "react": "*",
+    "react-native": "*",
     "react-native-otp-verify": "^1.0.3"
   }
 }
