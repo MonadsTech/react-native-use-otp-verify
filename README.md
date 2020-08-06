@@ -45,13 +45,13 @@ const OtpConfirm = () => {
 
 ### OTP Parser
 
-Default otp parser checks for following regex : /(\d+)[\s]_is|is[\s]_(\d+)\.?/g
+Default `otpParser` checks for following regex : /(\d+)[\s]_is|is[\s]_(\d+)\.?/g
 
 i.e. otp SMS must be one of following formats
 
-`OTP is 2098`
+- .... OTP is 2098 ....
 
-`2098 is OTP`
+- .... 2098 is OTP ....
 
 However, you can pass a custom `otpParser` to useOtpVerify hook.
 
