@@ -12,3 +12,5 @@ yarn-error.log
 .prettierrc.js    
 .flowconfig
 yarn.lock
+
+.history/
