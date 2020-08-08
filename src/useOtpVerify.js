@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Platform} from 'react-native';
 import RNOtpVerify from 'react-native-otp-verify';
 
@@ -23,9 +23,10 @@ export function smsListener(callback) {
 export function useSMSListener(smsHandler) {
   const [sms, setSMS] = useState('');
   const [err, setErr] = useState(null);
+  const cancelSMSListener = React.useRef(() => {});
 
   useEffect(() => {
-    return smsListener((error, message) => {
+    cancelSMSListener.current = smsListener((error, message) => {
       if (err !== error) {
         setErr(error ? error : null);
       }
@@ -35,9 +36,11 @@ export function useSMSListener(smsHandler) {
       }
       setSMS(message);
     });
-  });
 
-  return [sms, err];
+    return cancelSMSListener.current;
+  }, [err, smsHandler]);
+
+  return [sms, err, cancelSMSListener.current];
 }
 
 const OTP_REGEX = /(\d+)[\s]*is|is[\s]*(\d+)\.?/g;
@@ -51,7 +54,8 @@ function defaultOtpParser(sms) {
 
 export function useOtpVerify(otpParser = defaultOtpParser) {
   const [otp, setOTP] = useState(null);
-  const [sms, err] = Platform.OS === ANDROID ? useSMSListener() : [null, null];
+  const [sms, err, stopSMSListener] =
+    Platform.OS === ANDROID ? useSMSListener() : [null, null, () => {}];
 
   useEffect(() => {
     if (Platform.OS === ANDROID) {
@@ -61,5 +65,5 @@ export function useOtpVerify(otpParser = defaultOtpParser) {
     }
   }, [err, otpParser, sms]);
 
-  return [otp, err];
+  return [otp, err, stopSMSListener];
 }
