@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {Platform} from 'react-native';
 import RNOtpVerify from 'react-native-otp-verify';
 
-export function smsListener(callback) {
+export function smsListener(callback: any) {
   RNOtpVerify.getOtp()
-    .then(p =>
-      RNOtpVerify.addListener(message => {
+    .then((p) =>
+      RNOtpVerify.addListener((message) => {
         try {
           if (message) {
             callback(null, message);
@@ -15,18 +15,18 @@ export function smsListener(callback) {
         }
       }),
     )
-    .catch(p => console.log(p));
+    .catch((p) => console.log(p));
 
   return () => RNOtpVerify.removeListener();
 }
 
-export function useSMSListener(smsHandler) {
-  const [sms, setSMS] = useState('');
-  const [err, setErr] = useState(null);
+export function useSMSListener(smsHandler: any | undefined) {
+  const [sms, setSMS] = React.useState('');
+  const [err, setErr] = React.useState(null);
   const cancelSMSListener = React.useRef(() => {});
 
-  useEffect(() => {
-    cancelSMSListener.current = smsListener((error, message) => {
+  React.useEffect(() => {
+    cancelSMSListener.current = smsListener((error: any, message: string) => {
       if (err !== error) {
         setErr(error ? error : null);
       }
@@ -46,24 +46,32 @@ export function useSMSListener(smsHandler) {
 const OTP_REGEX = /(\d+)[\s]*is|is[\s]*(\d+)\.?/g;
 const ANDROID = 'android';
 
-function defaultOtpParser(sms) {
-  let otpMatch = OTP_REGEX.exec(sms);
+function defaultOtpParser(sms: string | null | any): string {
+  let otpMatch = OTP_REGEX.exec(sms || '');
 
   return otpMatch ? otpMatch[1] || otpMatch[2] || '' : '';
 }
 
 export function useOtpVerify(otpParser = defaultOtpParser) {
-  const [otp, setOTP] = useState(null);
+  const [otp, setOTP] = React.useState<string | null>(null);
   const [sms, err, stopSMSListener] =
-    Platform.OS === ANDROID ? useSMSListener() : [null, null, () => {}];
+    Platform.OS === ANDROID
+      ? useSMSListener(undefined)
+      : [null, null, () => {}];
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (Platform.OS === ANDROID) {
       if (!err) {
-        setOTP(otpParser(sms));
+        const otp = otpParser(sms);
+        setOTP(otp);
       }
     }
   }, [err, otpParser, sms]);
 
   return [otp, err, stopSMSListener];
 }
+
+export default {
+  getHash: RNOtpVerify.getHash,
+  useOtpVerify,
+};

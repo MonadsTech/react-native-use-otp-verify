@@ -1,19 +1,19 @@
 # react-native-use-otp-verify
 
-Wrapper Hook for [react-native-otp-verify](https://github.com/faizalshap/react-native-otp-verify)
+Wrapper Hook for `react-native-otp-verify`
 
 Make yourself familiar with [react-native-otp-verify](https://github.com/faizalshap/react-native-otp-verify#readme) before using this hook .
 
 ### Installation
 
 ```bash
-yarn add react-native-otp-verify react-native-use-otp-verify
+yarn add react-native-otp-verify @monadstech/react-native-use-otp-verify
 ```
 
 or
 
 ```bash
-npm i react-native-otp-verify react-native-use-otp-verify
+npm i react-native-otp-verify @monadstech/react-native-use-otp-verify
 ```
 
 then Follow instruction of [react-native-otp-verify](https://github.com/faizalshap/react-native-otp-verify#readme) first
@@ -24,7 +24,7 @@ then Follow instruction of [react-native-otp-verify](https://github.com/faizalsh
 
 ```js
 import React from 'react';
-import {useOtpVerify} from 'rn-use-otp-verify';
+import {useOtpVerify} from '@monadstech/rn-use-otp-verify';
 
 const OtpConfirm = () => {
   const [otp, setOtp] = React.useState('');
@@ -59,4 +59,4 @@ this `otpParser` must accept sms as argument and return otp as string or empty s
 
 ## LICENSE
 
-MIT
+MIT LICENSE
