@@ -67,7 +67,4 @@ function useOtpVerify(otpParser) {
     return [otp, err, stopSMSListener];
 }
 exports.useOtpVerify = useOtpVerify;
-exports.default = {
-    getHash: react_native_otp_verify_1.default.getHash,
-    useOtpVerify: useOtpVerify,
-};
+exports.default = react_native_otp_verify_1.default;

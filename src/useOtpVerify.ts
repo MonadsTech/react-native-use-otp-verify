@@ -71,7 +71,4 @@ export function useOtpVerify(otpParser = defaultOtpParser) {
   return [otp, err, stopSMSListener];
 }
 
-export default {
-  getHash: RNOtpVerify.getHash,
-  useOtpVerify,
-};
+export default RNOtpVerify;
