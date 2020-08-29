@@ -1,6 +1,6 @@
 {
   "name": "@monadstech/react-native-use-otp-verify",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "React Native hook wrapper for use-otp-verify",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
