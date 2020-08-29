@@ -25,7 +25,6 @@
     "retrieve",
     "otp read"
   ],
-  "module": "dist/useOtpVerify.js",
   "scripts": {
     "build": "tsc"
   },
