@@ -5,7 +5,7 @@
     "module": "commonjs",
     "declaration": true,
     "declarationMap": true /* Generates a sourcemap for each corresponding '.d.ts' file. */,
-    "outDir": "./dist",
+    "outDir": "./lib",
     // "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,

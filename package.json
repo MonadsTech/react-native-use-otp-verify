@@ -1,9 +1,9 @@
 {
   "name": "@monadstech/react-native-use-otp-verify",
   "version": "1.0.6",
-  "description": "react native hook wrapper for use-otp-verify",
-  "main": "dist/useOtpVerify.js",
-  "types": "dist/useOtpVerify.d.ts",
+  "description": "React Native hook wrapper for use-otp-verify",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "license": "MIT",
   "author": {
     "name": "Pankaj Vaghela",
@@ -14,6 +14,9 @@
     "type": "git",
     "url": "https://github.com/MonadsTech/react-native-use-otp-verify"
   },
+  "files": [
+    "lib/**/*"
+  ],
   "keywords": [
     "react",
     "native",
@@ -26,7 +29,8 @@
     "otp read"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "yarn build"
   },
   "dependencies": {
     "react-native-otp-verify": "^1.0.3"
